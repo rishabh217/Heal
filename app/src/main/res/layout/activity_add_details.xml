@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AddDetailsActivity">
+
+    <TextView
+        android:id="@+id/head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000"
+        android:layout_marginTop="25dp"
+        android:text="Add Details"/>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/head"
+        android:layout_marginTop="75dp"
+        android:gravity="center"
+        android:hint="Enter Name*" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:gravity="center"
+        android:hint="Enter Email" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email"
+        android:gravity="center"
+        android:hint="Enter Phone" />
+
+    <EditText
+        android:id="@+id/dname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phone"
+        android:gravity="center"
+        android:hint="Enter Doctor's Name*" />
+
+    <LinearLayout
+        android:id="@+id/medHead1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dname"
+        android:weightSum="4.75"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/med1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Medicine 1*"
+            android:gravity="center"
+            android:layout_weight="1.75"/>
+
+        <EditText
+            android:id="@+id/man1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Manufacturer"
+            android:gravity="center"
+            android:layout_weight="2"/>
+
+        <EditText
+            android:id="@+id/dose1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Dose*"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/medHead2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medHead1"
+        android:weightSum="4.75"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/med2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Medicine 2"
+            android:gravity="center"
+            android:layout_weight="1.75"/>
+
+        <EditText
+            android:id="@+id/man2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Manufacturer"
+            android:gravity="center"
+            android:layout_weight="2"/>
+
+        <EditText
+            android:id="@+id/dose2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Dose"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/medHead3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medHead2"
+        android:weightSum="4.75"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/med3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Medicine 3"
+            android:gravity="center"
+            android:layout_weight="1.75"/>
+
+        <EditText
+            android:id="@+id/man3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Manufacturer"
+            android:gravity="center"
+            android:layout_weight="2"/>
+
+        <EditText
+            android:id="@+id/dose3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Dose"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/medHead4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medHead3"
+        android:weightSum="4.75"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/med4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Medicine 4"
+            android:gravity="center"
+            android:layout_weight="1.75"/>
+
+        <EditText
+            android:id="@+id/man4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Manufacturer"
+            android:gravity="center"
+            android:layout_weight="2"/>
+
+        <EditText
+            android:id="@+id/dose4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Dose"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Save"
+        android:layout_marginBottom="50dp"/>
+
+</RelativeLayout>

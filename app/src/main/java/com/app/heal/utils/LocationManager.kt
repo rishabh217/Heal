@@ -19,12 +19,10 @@ import javax.inject.Inject
 class LocationManager @Inject constructor(var appPreferences: AppPreferences, var firebaseManager: FirebaseManager) {
 
     var mActivity: Activity? = null
-    var mFamId: String? = null
 
     @SuppressLint("MissingPermission")
-    fun getLastLocation(activity: Activity, famId: String) {
+    fun getLastLocation(activity: Activity) {
         this.mActivity = activity
-        this.mFamId = famId
         val mFusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
         if (checkPermissions(activity)) {
             if (isLocationEnabled(activity)) {
@@ -107,8 +105,7 @@ class LocationManager @Inject constructor(var appPreferences: AppPreferences, va
 
         val latlng: LatLng = LatLng(location.latitude, location.longitude)
         appPreferences.lastLocation = latlng
-        if (!mFamId.isNullOrEmpty())
-//            firebaseManager.uploadLocation(latlng, mFamId!!)
+//        firebaseManager.uploadLocation(latlng, mFamId!!)
         if (mActivity != null)
             Toast.makeText(mActivity, "${location.latitude}, ${location.longitude}", Toast.LENGTH_SHORT).show()
 
