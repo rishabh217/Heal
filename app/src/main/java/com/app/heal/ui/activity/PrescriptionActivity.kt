@@ -1,4 +1,4 @@
-package com.app.heal.activity
+package com.app.heal.ui.activity
 
 import android.Manifest
 import android.app.Activity

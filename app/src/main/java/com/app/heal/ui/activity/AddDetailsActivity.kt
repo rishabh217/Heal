@@ -1,6 +1,5 @@
-package com.app.heal.activity
+package com.app.heal.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
@@ -8,10 +7,10 @@ import com.app.heal.R
 import com.app.heal.model.*
 import com.app.heal.utils.getStartOfDay
 import com.app.heal.utils.getTodaysDate
+import com.app.heal.utils.openPrescriptionActivity
 import com.app.heal.utils.randomAlphaString
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_add_details.*
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -115,11 +114,7 @@ class AddDetailsActivity : BaseActivity() {
             user.medicineCourses = medCourseMap
 
             firebaseManager.updateUserDetails(user)
-            val intent = Intent(this, PrescriptionActivity::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            }
-            intent.putExtra("doctorId", doctorId)
-            startActivity(intent)
+            openPrescriptionActivity(doctorId)
         }
 
     }

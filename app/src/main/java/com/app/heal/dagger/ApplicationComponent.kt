@@ -1,7 +1,7 @@
 package com.app.heal.dagger
 
 import com.app.heal.HealApplication
-import com.app.heal.activity.BaseActivity
+import com.app.heal.ui.activity.BaseActivity
 import dagger.Component
 import javax.inject.Singleton
 

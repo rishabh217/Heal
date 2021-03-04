@@ -9,8 +9,9 @@ import android.view.animation.BounceInterpolator
 import android.view.animation.ScaleAnimation
 import android.widget.TextView
 import com.app.heal.R
-import com.app.heal.activity.AddDetailsActivity
-import com.app.heal.activity.SignInActivity
+import com.app.heal.ui.activity.AddDetailsActivity
+import com.app.heal.ui.activity.PrescriptionActivity
+import com.app.heal.ui.activity.SignInActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
@@ -88,4 +89,12 @@ fun setSnackBar(root: View?, snackTitle: String?) {
         snackTV.gravity = Gravity.CENTER_HORIZONTAL
         snackTV.maxLines = 5
     }
+}
+
+fun Context.openPrescriptionActivity(doctorId: String) {
+    val intent = Intent(this, PrescriptionActivity::class.java).apply {
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    }
+    intent.putExtra("doctorId", doctorId)
+    startActivity(intent)
 }

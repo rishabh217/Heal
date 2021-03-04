@@ -15,11 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PrescriptionActivity" />
-        <activity android:name=".activity.AddDetailsActivity" />
-        <activity android:name=".activity.PhoneLoginActivity" />
-        <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.SignInActivity">
+        <activity android:name=".ui.activity.PrescriptionActivity" />
+        <activity android:name=".ui.activity.AddDetailsActivity" />
+        <activity android:name=".ui.activity.PhoneLoginActivity" />
+        <activity android:name=".ui.activity.HomeActivity" />
+        <activity android:name=".ui.activity.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
