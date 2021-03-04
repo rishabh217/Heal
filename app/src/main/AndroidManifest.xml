@@ -2,14 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.heal">
 
+    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".HealApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Heal">
-        <activity android:name=".activity.AddDetailsActivity"></activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.PrescriptionActivity" />
+        <activity android:name=".activity.AddDetailsActivity" />
         <activity android:name=".activity.PhoneLoginActivity" />
         <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.SignInActivity">

@@ -1,11 +1,13 @@
 package com.app.heal.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import com.app.heal.R
 import com.app.heal.model.*
 import com.app.heal.utils.getStartOfDay
+import com.app.heal.utils.getTodaysDate
 import com.app.heal.utils.randomAlphaString
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_add_details.*
@@ -24,10 +26,12 @@ class AddDetailsActivity : BaseActivity() {
 
         save.setOnClickListener {
 
-            val medIdArr = arrayListOf<String>()
-            val medArr = arrayListOf<String>()
-            val manArr = arrayListOf<String>()
-            val doseArr = arrayListOf<String>()
+            getStartOfDay(Date())
+
+            val medIdArr = arrayListOf<String>("", "", "", "")
+            val medArr = arrayListOf<String>("", "", "", "")
+            val manArr = arrayListOf<String>("", "", "", "")
+            val doseArr = arrayListOf<String>("", "", "", "")
 
             for (idx in 0..3) {
                 medArr[idx] = if (etMedArr[idx].text.toString().isNotEmpty()) etMedArr[idx].text.toString() else ""
@@ -81,25 +85,25 @@ class AddDetailsActivity : BaseActivity() {
             val startOfToday = getStartOfDay(Date())
             val doseTimeArr = arrayListOf<Long>(
                     startOfToday + (21 * 60 * 60 * 1000),
-                    startOfToday + (15 * 60 * 60 * 1000),
-                    startOfToday + (9 * 60 * 60 * 1000)
+                    startOfToday + (9 * 60 * 60 * 1000),
+                    startOfToday + (15 * 60 * 60 * 1000)
             )
-            val formatter = SimpleDateFormat("dd-MM-yyyy")
-            formatter.timeZone = TimeZone.getTimeZone("IST")
-            val dateText = formatter.format(Date())
+            val dateText = getTodaysDate()
             val medicineCourse = MedicineCourse()
             val medicineMap = hashMapOf<String, DailyDose>()
             for (idx in 0..3) {
                 if (medIdArr[idx].isNotEmpty()) {
                     val dailyDose = DailyDose()
                     val dose = Dose()
-                    val doseMap = hashMapOf<Long, MedStatus>()
+                    val doseMap = hashMapOf<String, MedStatus>()
                     val doses = try { doseArr[idx].toDouble().toInt() } catch (ex: ClassCastException) { doseArr[idx].toInt() }
                     for (doseCount in 0 until doses) {
-                        doseMap[doseTimeArr[doseCount]] = MedStatus.Upcoming
+                        doseMap[doseTimeArr[doseCount].toString()] = MedStatus.Upcoming
                     }
                     val dailyDoseMap = hashMapOf<String, Dose>()
+                    dose.doseMap = doseMap
                     dailyDoseMap[dateText] = dose
+                    dailyDose.name = medArr[idx]
                     dailyDose.dailyDoseMap = dailyDoseMap
                     medicineMap[medIdArr[idx]] = dailyDose
                 }
@@ -109,6 +113,13 @@ class AddDetailsActivity : BaseActivity() {
             val medCourseMap = hashMapOf<String, MedicineCourse>()
             medCourseMap[doctorId] = medicineCourse
             user.medicineCourses = medCourseMap
+
+            firebaseManager.updateUserDetails(user)
+            val intent = Intent(this, PrescriptionActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            intent.putExtra("doctorId", doctorId)
+            startActivity(intent)
         }
 
     }
