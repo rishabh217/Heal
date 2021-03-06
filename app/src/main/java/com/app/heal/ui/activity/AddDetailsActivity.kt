@@ -113,6 +113,7 @@ class AddDetailsActivity : BaseActivity() {
             user.medicineCourses = medCourseMap
 
             firebaseManager.updateUserDetails(user)
+            firebaseManager.updateDoctorId(doctorId)
             openPrescriptionActivity(doctorId)
         }
 

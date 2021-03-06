@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 @Singleton
@@ -129,6 +130,10 @@ class FirebaseManager @Inject constructor(
                     user.doctors = getDoctorsHashMapFromDataSnapshot(doctorsMap)
                     val medicineCoursesMap = userMap["medicineCourses"] as? HashMap<String, Any?>
                     user.medicineCourses = getMedicineCoursesHashMapFromDataSnapshot(medicineCoursesMap)
+                    val doctorIdsMap = userMap["doctorIds"] as? ArrayList<String>
+                    if (doctorIdsMap != null) {
+                        user.doctorIds = doctorIdsMap
+                    }
                     userDetailsCallback.onGetUserDetails(user)
                 } else
                     userDetailsCallback.onGetUserDetails(null)
@@ -355,6 +360,7 @@ class FirebaseManager @Inject constructor(
     }
 
     fun isNewUser(newUserCheckCallback: NewUserCheckCallback) {
+        // TODO: 06-03-2021 May be a better way to do this
         val userReference =
             database.child("users").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
                 .child("name")
@@ -370,6 +376,50 @@ class FirebaseManager @Inject constructor(
             }
         }
         userReference.addListenerForSingleValueEvent(postListener)
+    }
+
+    fun getFirstDoctorId(firstDoctorIdCallback: FirstDoctorIdCallback) {
+        val doctorsReference =
+            database.child("users").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+                .child("doctorIds")
+        val postListener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.value != null) {
+                    val doctorIds = dataSnapshot.value as ArrayList<String>
+                    firstDoctorIdCallback.onGetFirstDoctorId(doctorIds[0])
+                } else
+                    firstDoctorIdCallback.onGetFirstDoctorId(null)
+            }
+        }
+        doctorsReference.addListenerForSingleValueEvent(postListener)
+    }
+
+    fun updateDoctorId(doctorId: String) {
+        if (doctorId.isEmpty())
+            return
+        val doctorIdsReference =
+            database.child("users").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+                .child("doctorIds")
+        val postListener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.value != null) {
+                    val doctorIds = dataSnapshot.value as ArrayList<String>
+                    doctorIds.add(doctorId)
+                    doctorIdsReference.setValue(doctorIds)
+                } else {
+                    val doctorIds = arrayListOf<String>()
+                    doctorIds.add(doctorId)
+                    doctorIdsReference.setValue(doctorIds)
+                }
+            }
+        }
+        doctorIdsReference.addListenerForSingleValueEvent(postListener)
     }
 
 }

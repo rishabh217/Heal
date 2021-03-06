@@ -8,6 +8,7 @@ class User(
     var points: Double,
     var location: LatLng?,
     var doctors: HashMap<String, Doctor>?, // DoctorId -> DoctorInfo
+    var doctorIds: ArrayList<String>?, // nth Doctor Added -> DoctorId
     var medicineCourses: HashMap<String, MedicineCourse>? // DoctorId -> MedicineCourse
 ) {
     constructor() : this(
@@ -16,6 +17,7 @@ class User(
         "",
         "",
         0.0,
+        null,
         null,
         null,
         null
