@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import com.app.heal.R
+import com.app.heal.interfaces.UserDetailsCallback
 import com.app.heal.model.*
 import com.app.heal.utils.getStartOfDay
 import com.app.heal.utils.getTodaysDate
@@ -24,8 +25,6 @@ class AddDetailsActivity : BaseActivity() {
         val etDoseArr = arrayListOf<EditText>(findViewById(R.id.dose1), findViewById(R.id.dose2), findViewById(R.id.dose3), findViewById(R.id.dose4))
 
         save.setOnClickListener {
-
-            getStartOfDay(Date())
 
             val medIdArr = arrayListOf<String>("", "", "", "")
             val medArr = arrayListOf<String>("", "", "", "")
@@ -118,4 +117,5 @@ class AddDetailsActivity : BaseActivity() {
         }
 
     }
+
 }
