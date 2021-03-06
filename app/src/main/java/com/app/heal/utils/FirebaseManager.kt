@@ -30,7 +30,7 @@ class FirebaseManager @Inject constructor(
 
     fun updateToken(token: String) {
         database.child("tokens")
-            .child(FirebaseAuth.getInstance().currentUser?.uid.toString()).setValue(token)
+            .child(getSelfUId()).setValue(token)
     }
 
     fun updateUserDetails(user: User) {
@@ -88,7 +88,7 @@ class FirebaseManager @Inject constructor(
     private fun uploadImageToFirebase(doctorId: String, imageId: String, imageLink: String) {
         if (imageId.isNotEmpty()) {
             val prescriptionReference = database.child("users")
-                .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+                .child(getSelfUId())
                 .child("doctors").child(doctorId)
                 .child("prescription").child(imageId)
             prescriptionReference.child("url").setValue(imageLink)
@@ -147,7 +147,7 @@ class FirebaseManager @Inject constructor(
             doctorDetailsCallback.onGetDoctorDetails(null)
 
         val doctorReference =
-            database.child("users").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            database.child("users").child(getSelfUId())
                 .child("doctors").child(doctorId)
         val postListener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -176,7 +176,7 @@ class FirebaseManager @Inject constructor(
             medicineCoursesCallback.onGetMedicineCourses(null)
 
         val medicineCourseReference =
-            database.child("users").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            database.child("users").child(getSelfUId())
                 .child("medicineCourses").child(doctorId)
         val postListener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -328,7 +328,7 @@ class FirebaseManager @Inject constructor(
             prescriptionDetailsCallback.onGetPrescriptionDetails(null)
 
         val prescriptionReference =
-            database.child("users").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            database.child("users").child(getSelfUId())
                 .child("doctors").child(doctorId).child("prescription")
         val postListener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -362,7 +362,7 @@ class FirebaseManager @Inject constructor(
     fun isNewUser(newUserCheckCallback: NewUserCheckCallback) {
         // TODO: 06-03-2021 May be a better way to do this
         val userReference =
-            database.child("users").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            database.child("users").child(getSelfUId())
                 .child("name")
         val postListener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -380,7 +380,7 @@ class FirebaseManager @Inject constructor(
 
     fun getFirstDoctorId(firstDoctorIdCallback: FirstDoctorIdCallback) {
         val doctorsReference =
-            database.child("users").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            database.child("users").child(getSelfUId())
                 .child("doctorIds")
         val postListener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -401,7 +401,7 @@ class FirebaseManager @Inject constructor(
         if (doctorId.isEmpty())
             return
         val doctorIdsReference =
-            database.child("users").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            database.child("users").child(getSelfUId())
                 .child("doctorIds")
         val postListener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {

@@ -4,13 +4,8 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import com.app.heal.R
-import com.app.heal.interfaces.UserDetailsCallback
 import com.app.heal.model.*
-import com.app.heal.utils.getStartOfDay
-import com.app.heal.utils.getTodaysDate
-import com.app.heal.utils.openPrescriptionActivity
-import com.app.heal.utils.randomAlphaString
-import com.google.firebase.auth.FirebaseAuth
+import com.app.heal.utils.*
 import kotlinx.android.synthetic.main.activity_add_details.*
 import java.util.*
 import kotlin.collections.HashMap
@@ -77,7 +72,7 @@ class AddDetailsActivity : BaseActivity() {
             user.name = name.text.toString()
             if (email.text.toString().isNotEmpty()) user.email = email.text.toString()
             if (phone.text.toString().isNotEmpty()) user.phone = phone.text.toString()
-            user.userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
+            user.userId = getSelfUId()
 
             // TODO: 04-03-2021
             val startOfToday = getStartOfDay(Date())

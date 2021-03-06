@@ -98,3 +98,7 @@ fun Context.openPrescriptionActivity(doctorId: String) {
     intent.putExtra("doctorId", doctorId)
     startActivity(intent)
 }
+
+fun getSelfUId(): String {
+    return FirebaseAuth.getInstance().currentUser?.uid.toString()
+}
