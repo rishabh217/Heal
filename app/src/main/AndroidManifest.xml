@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.activity.DoctorActivity" />
         <activity android:name=".ui.activity.PrescriptionActivity" />
         <activity android:name=".ui.activity.AddDetailsActivity" />
         <activity android:name=".ui.activity.PhoneLoginActivity" />

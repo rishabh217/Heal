@@ -81,12 +81,13 @@ class AddDetailsActivity : BaseActivity() {
                     startOfToday + (9 * 60 * 60 * 1000),
                     startOfToday + (15 * 60 * 60 * 1000)
             )
-            val dateText = getTodaysDate()
+            var date = Date()
             val medicineCourse = MedicineCourse()
             val medicineMap = hashMapOf<String, DailyDose>()
             for (idx in 0..3) {
                 if (medIdArr[idx].isNotEmpty()) {
                     val dailyDose = DailyDose()
+                    dailyDose.points = 10
                     val dose = Dose()
                     val doseMap = hashMapOf<String, MedStatus>()
                     val doses = try { doseArr[idx].toDouble().toInt() } catch (ex: ClassCastException) { doseArr[idx].toInt() }
@@ -95,7 +96,10 @@ class AddDetailsActivity : BaseActivity() {
                     }
                     val dailyDoseMap = hashMapOf<String, Dose>()
                     dose.doseMap = doseMap
-                    dailyDoseMap[dateText] = dose
+                    for (day in 0..6) {
+                        dailyDoseMap[getDateString(date)] = dose
+                        date = getNextDate(date)
+                    }
                     dailyDose.name = medArr[idx]
                     dailyDose.dailyDoseMap = dailyDoseMap
                     medicineMap[medIdArr[idx]] = dailyDose
@@ -109,7 +113,7 @@ class AddDetailsActivity : BaseActivity() {
 
             firebaseManager.updateUserDetails(user)
             firebaseManager.updateDoctorId(doctorId)
-            openPrescriptionActivity(doctorId)
+            openPrescriptionActivity(doctorId, Util.TASK_TYPE_NEW)
         }
 
     }

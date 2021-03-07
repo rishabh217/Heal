@@ -21,6 +21,7 @@
                 android:id="@+id/docImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:src="@drawable/ic_doctor_avatar"
                 android:layout_centerHorizontal="true"/>
 
             <TextView

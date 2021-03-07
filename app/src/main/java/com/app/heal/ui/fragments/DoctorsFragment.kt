@@ -32,7 +32,7 @@ class DoctorsFragment : BaseFragment(), UserDetailsCallback {
 
         rvDoctors = view.findViewById(R.id.rvDoctors)
         gridLayoutManager = GridLayoutManager(this.context, 2)
-        doctorsAdapter = DoctorsAdapter()
+        doctorsAdapter = DoctorsAdapter(this.context!!)
         rvDoctors.adapter = doctorsAdapter
         rvDoctors.layoutManager = gridLayoutManager
 

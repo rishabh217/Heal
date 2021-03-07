@@ -93,7 +93,7 @@ class FirebaseManager @Inject constructor(
                 .child("prescription").child(imageId)
             prescriptionReference.child("url").setValue(imageLink)
             prescriptionReference.child("status").setValue(Status.InProgress)
-            prescriptionReference.child("date").setValue(getTodaysDate())
+            prescriptionReference.child("date").setValue(getDateString(Date()))
         }
     }
 
@@ -286,6 +286,11 @@ class FirebaseManager @Inject constructor(
                                     dailyDoseNode.medicineId = medicine.key
                                     if (dailyDoseMap != null) {
                                         dailyDoseNode.name = if (dailyDoseMap["name"] != null) dailyDoseMap["name"] as String else ""
+                                        dailyDoseNode.points =
+                                            if (dailyDoseMap["points"] != null)
+                                                try { dailyDoseMap["points"] as Long }
+                                                catch (ex: ClassCastException) { (dailyDoseMap["points"] as Double).toLong() }
+                                            else 0L
                                         val dailyMap = dailyDoseMap["dailyDoseMap"] as? HashMap<String, Any?>
                                         val dailyHashMap = hashMapOf<String, Dose>()
                                         if (dailyMap != null) {
@@ -420,6 +425,58 @@ class FirebaseManager @Inject constructor(
             }
         }
         doctorIdsReference.addListenerForSingleValueEvent(postListener)
+    }
+
+    fun updateMedicineStatus(doctorId: String, medicineId: String, time: String, status: MedStatus) {
+        if(doctorId.isEmpty() || medicineId.isEmpty() || time.isEmpty())
+            return
+        val medicineStatusReference =
+            database.child("users").child(getSelfUId())
+                .child("medicineCourses").child(doctorId)
+                .child("medicines").child(medicineId)
+                .child("dailyDoseMap").child(getDateString(Date()))
+                .child("doseMap").child(time)
+        medicineStatusReference.setValue(status)
+    }
+
+    fun fetchUserPoints(userPointsCallback: UserPointsCallback) {
+        val userPointsReference =
+            database.child("users").child(getSelfUId()).child("points")
+        val postListener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.value != null) {
+                    val points = try { dataSnapshot.value as Double } catch (ex: ClassCastException) { (dataSnapshot.value as Long).toDouble() }
+                    userPointsCallback.onGetUserPoints(points)
+                } else {
+                    userPointsCallback.onGetUserPoints(0.0)
+                }
+            }
+        }
+        userPointsReference.addListenerForSingleValueEvent(postListener)
+    }
+
+    fun updateUserPoints(mPoints: Double) {
+        val userPointsReference =
+            database.child("users").child(getSelfUId())
+                .child("points")
+        val postListener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.value != null) {
+                    var points = try { dataSnapshot.value as Double } catch (ex: ClassCastException) { (dataSnapshot.value as Long).toDouble() }
+                    points += mPoints
+                    userPointsReference.setValue(points)
+                } else {
+                    userPointsReference.setValue(mPoints)
+                }
+            }
+        }
+        userPointsReference.addListenerForSingleValueEvent(postListener)
     }
 
 }

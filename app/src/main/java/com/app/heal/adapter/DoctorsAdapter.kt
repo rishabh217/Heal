@@ -1,15 +1,18 @@
 package com.app.heal.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.heal.R
 import com.app.heal.model.Doctor
+import com.app.heal.utils.openDoctorActivity
 import kotlinx.android.synthetic.main.item_doctor_card.view.*
 
-class DoctorsAdapter : RecyclerView.Adapter<DoctorsAdapter.DoctorsViewHolder>() {
+class DoctorsAdapter(context: Context) : RecyclerView.Adapter<DoctorsAdapter.DoctorsViewHolder>() {
 
+    val mContext = context
     var doctors = arrayListOf<Doctor>()
 
     class DoctorsViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -36,6 +39,9 @@ class DoctorsAdapter : RecyclerView.Adapter<DoctorsAdapter.DoctorsViewHolder>() 
             holder.view.medsCount.text = "${medicines.size} Medicine"
         else
             holder.view.medsCount.visibility = View.INVISIBLE
+        holder.view.setOnClickListener {
+            mContext.openDoctorActivity(doctor.doctorId)
+        }
     }
 
     override fun getItemCount(): Int {
