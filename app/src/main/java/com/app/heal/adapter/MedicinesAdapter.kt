@@ -2,12 +2,12 @@ package com.app.heal.adapter
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.heal.R
 import com.app.heal.model.DailyDose
 import com.app.heal.model.MedStatus
+import com.app.heal.utils.animateView
 import com.app.heal.utils.getDateString
 import com.app.heal.utils.isTimeInAnHour
 import kotlinx.android.synthetic.main.item_medicine_course_card.view.*
@@ -61,6 +61,7 @@ class MedicinesAdapter(callback: Callback) : RecyclerView.Adapter<MedicinesAdapt
                                 val formatter = SimpleDateFormat("hh:mm aa")
                                 holder.view.medTime.text = formatter.format(Date(time))
                                 holder.view.medTaken.setOnClickListener {
+                                    animateView(holder.view.medTaken)
                                     mCallback.onMedicineCardClick(
                                         (points.toDouble() / doseCount),
                                         time.toString(),
@@ -69,6 +70,7 @@ class MedicinesAdapter(callback: Callback) : RecyclerView.Adapter<MedicinesAdapt
                                     )
                                 }
                                 holder.view.medMissed.setOnClickListener {
+                                    animateView(holder.view.medMissed)
                                     mCallback.onMedicineCardClick(
                                         0.0,
                                         time.toString(),
