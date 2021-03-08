@@ -375,7 +375,7 @@ class FirebaseManager @Inject constructor(
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.value != null) {
-                    newUserCheckCallback.onGetCheckDetails(true)
+                    newUserCheckCallback.onGetCheckDetails(false)
                 } else
                     newUserCheckCallback.onGetCheckDetails(true)
             }
@@ -477,6 +477,32 @@ class FirebaseManager @Inject constructor(
             }
         }
         userPointsReference.addListenerForSingleValueEvent(postListener)
+    }
+
+    fun setContactUserDetails(userId: String, contact: ContactUser) {
+        if (userId.isEmpty() || contact.phone.isEmpty())
+            return
+        val contactUserReference =
+            database.child("contactUsers").child(userId)
+                .child(randomAlphaString(5))
+        contactUserReference.setValue(contact)
+    }
+
+    fun getDisplayInformation(type: String, displayInformationCallback: DisplayInformationCallback) {
+        val infoReference =
+            database.child("information").child(type)
+        val postListener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.value != null) {
+                    val info = dataSnapshot.value as ArrayList<String?>
+                    displayInformationCallback.onGetInformation(info)
+                }
+            }
+        }
+        infoReference.addListenerForSingleValueEvent(postListener)
     }
 
 }

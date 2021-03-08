@@ -3,12 +3,14 @@ package com.app.heal.utils
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.os.Handler
 import android.view.Gravity
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.view.animation.ScaleAnimation
 import android.widget.TextView
+import androidx.viewpager.widget.ViewPager
 import com.app.heal.R
 import com.app.heal.ui.activity.*
 import com.google.android.material.snackbar.Snackbar
@@ -48,9 +50,9 @@ fun animateView(vararg views: View?) {
     }
 }
 
-fun Context.login() {
+fun Context.login(isNewUser: Boolean) {
     val intent: Intent = if (FirebaseAuth.getInstance().currentUser != null) {
-        Intent(this, AddDetailsActivity::class.java)
+        if (isNewUser) Intent(this, AddDetailsActivity::class.java) else  Intent(this, HomeActivity::class.java)
     } else {
         Intent(this, SignInActivity::class.java)
     }
@@ -143,4 +145,34 @@ fun dp2px(resources: Resources, dp: Float): Float {
 fun sp2px(resources: Resources, sp: Float): Float {
     val scale: Float = resources.displayMetrics.scaledDensity
     return sp * scale
+}
+
+fun isTimeBetweenMedicineTiming(time: Long): Boolean {
+    val startOfDay = getStartOfDay(Date())
+    val startOfRoutine = startOfDay + (9 * 60 * 60 * 1000) - (5 * 60 * 1000) // 8:55 AM
+    val endOfRoutine = startOfDay + (21 * 60 * 60 * 1000) + (5 * 60 * 1000) // 9:05 PM
+    if (time in startOfRoutine..endOfRoutine) {
+        return true
+    }
+    return false
+}
+
+fun ViewPager.autoScroll(interval: Long) {
+    val handler = Handler()
+    var scrollPosition = 0
+
+    val runnable = object : Runnable {
+        override fun run() {
+            /**
+             * Calculate "scroll position" with
+             * adapter pages count and current
+             * value of scrollPosition.
+             */
+            val count = adapter?.count ?: 0
+            if (count != 0)
+                setCurrentItem(scrollPosition++ % count, true)
+            handler.postDelayed(this, interval)
+        }
+    }
+    handler.post(runnable)
 }

@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.prescription.PrescriptionInProgressFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/inProgressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:text="Your prescription is going through scrutiny. It usually takes few minutes. Till then why don't you see some health yip." />
+    
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpTips"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Prescription InProgress" />
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_above="@id/indicatorTips"
+        android:layout_below="@id/inProgressText"/>
 
-</FrameLayout>
+    <com.app.heal.ui.CirclePageIndicator
+        android:id="@+id/indicatorTips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
+        android:padding="10dip"
+        app:centered="true"
+        app:fillColor="#000000"
+        app:pageColor="#fff"
+        app:snap="false" />
+
+</RelativeLayout>

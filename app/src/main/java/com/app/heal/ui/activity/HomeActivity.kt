@@ -62,8 +62,9 @@ class HomeActivity : BaseActivity(), PrescriptionDetailsCallback, FirstDoctorIdC
     }
 
     override fun onGetFirstDoctorId(doctorId: String?) {
-        if (doctorId != null)
+        if (doctorId != null) {
             firebaseManager.getPrescriptionDetails(doctorId, Util.LISTENER_TYPE_VALUE_EVENT, this)
+        }
     }
 
 }

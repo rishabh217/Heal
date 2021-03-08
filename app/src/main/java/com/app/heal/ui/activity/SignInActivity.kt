@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.app.heal.R
+import com.app.heal.interfaces.NewUserCheckCallback
 import com.app.heal.utils.animateView
 import com.app.heal.utils.login
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -19,7 +20,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
-class SignInActivity : BaseActivity() {
+class SignInActivity : BaseActivity(), NewUserCheckCallback {
 
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
@@ -132,25 +133,29 @@ class SignInActivity : BaseActivity() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             googleButton.visibility = View.GONE
-            phoneButton.visibility = View.GONE
-            login()
+//            phoneButton.visibility = View.GONE
+            firebaseManager.isNewUser(this)
         } else {
             googleButton.visibility = View.VISIBLE
-            phoneButton.visibility = View.VISIBLE
+//            phoneButton.visibility = View.VISIBLE
             googleButton.setOnClickListener {
                 animateView(googleButton)
                 signIn()
             }
-            phoneButton.setOnClickListener {
-                animateView(phoneButton)
-                val intent = Intent(this, PhoneLoginActivity::class.java)
-                startActivity(intent)
-            }
+//            phoneButton.setOnClickListener {
+//                animateView(phoneButton)
+//                val intent = Intent(this, PhoneLoginActivity::class.java)
+//                startActivity(intent)
+//            }
         }
     }
 
     companion object {
         private const val TAG = "SignInActivity"
         private const val RC_SIGN_IN = 9001
+    }
+
+    override fun onGetCheckDetails(isNewUser: Boolean) {
+        login(isNewUser)
     }
 }

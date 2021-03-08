@@ -2,11 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.heal">
 
-    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <application
         android:name=".HealApplication"
         android:allowBackup="true"
@@ -15,18 +10,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.DoctorActivity" />
-        <activity android:name=".ui.activity.PrescriptionActivity" />
-        <activity android:name=".ui.activity.AddDetailsActivity" />
-        <activity android:name=".ui.activity.PhoneLoginActivity" />
-        <activity android:name=".ui.activity.HomeActivity" />
-        <activity android:name=".ui.activity.SignInActivity">
+        <activity android:name=".ui.activity.ContactUserActivity"></activity>
+        <activity android:name=".ui.activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.DoctorActivity" />
+        <activity android:name=".ui.activity.PrescriptionActivity" />
+        <activity android:name=".ui.activity.AddDetailsActivity" />
+        <activity android:name=".ui.activity.PhoneLoginActivity" />
+        <activity android:name=".ui.activity.HomeActivity" />
+        <activity android:name=".ui.activity.SignInActivity" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
 
 </manifest>

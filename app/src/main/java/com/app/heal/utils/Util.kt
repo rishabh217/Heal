@@ -12,6 +12,8 @@ class Util {
         const val TASK_TYPE_NEW = "NewTask"
         const val TASK_TYPE_SAME = "SameTask"
 
+        const val INFORMATION_TYPE_TIPS = "tips"
+
     }
 
 }
