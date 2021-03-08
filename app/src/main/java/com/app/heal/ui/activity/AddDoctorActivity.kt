@@ -3,20 +3,18 @@ package com.app.heal.ui.activity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import android.widget.Toast
 import com.app.heal.R
 import com.app.heal.model.*
 import com.app.heal.utils.*
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_add_details.*
+import kotlinx.android.synthetic.main.activity_add_doctor.*
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class AddDetailsActivity : BaseActivity() {
+class AddDoctorActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_details)
+        setContentView(R.layout.activity_add_doctor)
 
         val etMedArr = arrayListOf<EditText>(findViewById(R.id.med1), findViewById(R.id.med2), findViewById(R.id.med3), findViewById(R.id.med4))
         val etManArr = arrayListOf<EditText>(findViewById(R.id.man1), findViewById(R.id.man2), findViewById(R.id.man3), findViewById(R.id.man4))
@@ -40,8 +38,8 @@ class AddDetailsActivity : BaseActivity() {
                 doseArr[idx] = if (etDoseArr[idx].text.toString().isNotEmpty()) etDoseArr[idx].text.toString() else ""
             }
 
-            if (name.text.toString().isEmpty() || dname.text.toString().isEmpty() || age.text.toString().isEmpty() || gender.text.toString().isEmpty()) {
-                Toast.makeText(this, "Enter proper info.", Toast.LENGTH_SHORT).show()
+            if (dname.text.toString().isEmpty()) {
+                dname.error = "Required"
                 return@setOnClickListener
             }
 
@@ -51,9 +49,6 @@ class AddDetailsActivity : BaseActivity() {
                     return@setOnClickListener
                 }
             }
-
-            val authEmail = FirebaseAuth.getInstance().currentUser?.email
-            email.setText(authEmail?.toString() ?: "")
 
             val doctorId = randomAlphaString(7)
             for (idx in 0..3) {
@@ -76,18 +71,6 @@ class AddDetailsActivity : BaseActivity() {
             doctor.name = dname.text.toString()
             doctor.medicines = medMap
 
-            val user = User()
-            val docMap = hashMapOf<String, Doctor>()
-            docMap[doctorId] = doctor
-            user.doctors = docMap
-            user.name = name.text.toString()
-            user.age = age.text.toString().toLong()
-            user.gender = gender.text.toString()
-            if (email.text.toString().isNotEmpty()) user.email = email.text.toString()
-            if (phone.text.toString().isNotEmpty()) user.phone = phone.text.toString()
-            user.userId = getSelfUId()
-
-            // TODO: 04-03-2021
             var date = Date()
             var startOfDay = getStartOfDay(date)
             val doseTimeArr = arrayListOf<Long>(
@@ -129,15 +112,10 @@ class AddDetailsActivity : BaseActivity() {
             }
             medicineCourse.medicines = medicineMap
 
-            val medCourseMap = hashMapOf<String, MedicineCourse>()
-            medCourseMap[doctorId] = medicineCourse
-            user.medicineCourses = medCourseMap
-
-            firebaseManager.updateUserDetails(user)
+            firebaseManager.addDoctor(doctorId, doctor, medicineCourse)
             firebaseManager.updateDoctorId(doctorId)
-            openPrescriptionActivity(doctorId, Util.TASK_TYPE_NEW)
+            openPrescriptionActivity(doctorId, Util.TASK_TYPE_SAME)
         }
 
     }
-
 }

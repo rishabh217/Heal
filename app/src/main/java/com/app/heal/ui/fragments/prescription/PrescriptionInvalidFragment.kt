@@ -12,16 +12,18 @@ import com.app.heal.utils.Util
 import com.app.heal.utils.animateView
 import com.app.heal.utils.openPrescriptionActivity
 
-class InvalidPrescriptionFragment : BaseFragment(), FirstDoctorIdCallback {
+class PrescriptionInvalidFragment : BaseFragment(), FirstDoctorIdCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_invalid_prescription, container, false)
+        val view = inflater.inflate(R.layout.fragment_prescription_invalid, container, false)
 
         val uploadButton = view?.findViewById<Button>(R.id.uploadAgain)
         uploadButton?.setOnClickListener {

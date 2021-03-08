@@ -33,6 +33,7 @@
                 android:textColor="#000"
                 android:layout_marginTop="10dp"
                 android:hint="Doctor's Name"
+                android:textAlignment="center"
                 android:layout_below="@id/docImage"/>
 
             <TextView
@@ -44,6 +45,7 @@
                 android:textColor="#000"
                 android:layout_marginTop="5dp"
                 android:hint="5 Medicines"
+                android:textAlignment="center"
                 android:layout_below="@id/docName"/>
 
         </RelativeLayout>

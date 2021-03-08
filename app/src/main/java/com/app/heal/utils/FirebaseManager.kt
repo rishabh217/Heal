@@ -215,7 +215,7 @@ class FirebaseManager @Inject constructor(
                                 prescriptionNode.prescriptionId = prescriptionMap.keys?.toTypedArray()?.get(0)
                                 prescriptionNode.url = if (prescription["url"] != null) prescription["url"] as String else ""
                                 prescriptionNode.date = if (prescription["date"] != null) prescription["date"] as String else ""
-                                prescriptionNode.status = if (prescription["status"] != null) Status.valueOf(prescription["status"] as String) else Status.InProgress
+                                prescriptionNode.status = if (prescription["status"] != null) Status.valueOf(prescription["status"] as String) else Status.NotUploaded
                             }
                         }
                         if (prescriptionNode.prescriptionId.isNotEmpty()) {
@@ -349,7 +349,7 @@ class FirebaseManager @Inject constructor(
                             prescriptionNode.prescriptionId = prescriptionMap.keys?.toTypedArray()?.get(0)
                             prescriptionNode.url = if (prescription["url"] != null) prescription["url"] as String else ""
                             prescriptionNode.date = if (prescription["date"] != null) prescription["date"] as String else ""
-                            prescriptionNode.status = if (prescription["status"] != null) Status.valueOf(prescription["status"] as String) else Status.InProgress
+                            prescriptionNode.status = if (prescription["status"] != null) Status.valueOf(prescription["status"] as String) else Status.NotUploaded
                         }
                     }
                     if (prescriptionNode.prescriptionId.isNotEmpty())
@@ -503,6 +503,13 @@ class FirebaseManager @Inject constructor(
             }
         }
         infoReference.addListenerForSingleValueEvent(postListener)
+    }
+
+    fun addDoctor(doctorId: String, doctor: Doctor, medicineCourse: MedicineCourse) {
+        val userReference =
+            database.child("users").child(getSelfUId())
+        userReference.child("doctors").child(doctorId).setValue(doctor)
+        userReference.child("medicineCourses").child(doctorId).setValue(medicineCourse)
     }
 
 }

@@ -4,7 +4,8 @@ enum class Status {
     Valid,
     Invalid,
     InProgress,
-    Issue
+    Issue,
+    NotUploaded
 }
 
 enum class MedStatus {
@@ -12,4 +13,11 @@ enum class MedStatus {
     Missed,
     Taken,
     NotTaken
+}
+
+enum class FlagStatus {
+    Open,
+    Closed,
+    InProgress,
+    None
 }

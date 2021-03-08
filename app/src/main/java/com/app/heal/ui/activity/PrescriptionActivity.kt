@@ -55,6 +55,10 @@ class PrescriptionActivity : BaseActivity(), ImageUploadStatusCallback {
                 setSnackBar(findViewById(android.R.id.content), "Some Problem Occurred")
         }
 
+        skipText?.setOnClickListener {
+            onImageUploaded(true, "")
+        }
+
     }
 
     private fun askStoragePermission() {
@@ -147,7 +151,8 @@ class PrescriptionActivity : BaseActivity(), ImageUploadStatusCallback {
 
     override fun onImageUploaded(status: Boolean, imageUrl: String) {
         if (status) {
-            setSnackBar(findViewById(android.R.id.content), "Uploaded Successfully")
+            if (imageUrl.isNotEmpty())
+                setSnackBar(findViewById(android.R.id.content), "Uploaded Successfully")
             val intent = Intent(this, HomeActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }

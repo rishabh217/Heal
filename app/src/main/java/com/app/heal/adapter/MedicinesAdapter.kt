@@ -56,7 +56,7 @@ class MedicinesAdapter(callback: Callback) : RecyclerView.Adapter<MedicinesAdapt
                         if (status == MedStatus.Taken)
                             takenCount += 1
                         if (isTimeInAnHour(time)) {
-                            if (status != MedStatus.Taken) {
+                            if (status != MedStatus.Taken && status != MedStatus.NotTaken) {
                                 holder.view.medButtonsLayout.visibility = View.VISIBLE
                                 val formatter = SimpleDateFormat("hh:mm aa")
                                 holder.view.medTime.text = formatter.format(Date(time))

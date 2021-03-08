@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.heal.R
 import com.app.heal.adapter.MedicinesAdapter
+import com.app.heal.interfaces.DoctorDetailsCallback
 import com.app.heal.interfaces.MedicineCoursesCallback
 import com.app.heal.model.DailyDose
+import com.app.heal.model.Doctor
 import com.app.heal.model.MedStatus
 import com.app.heal.model.MedicineCourse
 import com.app.heal.utils.Util
@@ -16,7 +18,8 @@ import kotlinx.android.synthetic.main.activity_doctor.*
 import java.util.*
 import kotlin.collections.HashMap
 
-class DoctorActivity : BaseActivity(), MedicineCoursesCallback, MedicinesAdapter.Callback {
+class DoctorActivity : BaseActivity(), MedicineCoursesCallback,
+    MedicinesAdapter.Callback, DoctorDetailsCallback {
 
     private var doctorId = ""
     private lateinit var rvMedicines: RecyclerView
@@ -36,8 +39,10 @@ class DoctorActivity : BaseActivity(), MedicineCoursesCallback, MedicinesAdapter
             doctorId = bundle.getString("doctorId")!!
         }
 
-        if (doctorId.isNotEmpty())
+        if (doctorId.isNotEmpty()) {
+            firebaseManager.getDoctorDetails(doctorId, Util.LISTENER_TYPE_SINGLE_EVENT, this)
             firebaseManager.getMedicineCourses(doctorId, Util.LISTENER_TYPE_VALUE_EVENT, this)
+        }
 
         rvMedicines.adapter = medicinesAdapter
         rvMedicines.layoutManager = linearLayoutManager
@@ -83,5 +88,11 @@ class DoctorActivity : BaseActivity(), MedicineCoursesCallback, MedicinesAdapter
         if (status == MedStatus.Taken)
             firebaseManager.updateUserPoints(roundOffDecimal(points))
         firebaseManager.updateMedicineStatus(doctorId, medicineId, time, status)
+    }
+
+    override fun onGetDoctorDetails(doctor: Doctor?) {
+        if (doctor != null) {
+            docName?.text = doctor.name
+        }
     }
 }

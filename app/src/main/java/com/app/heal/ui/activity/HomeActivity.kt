@@ -11,9 +11,10 @@ import com.app.heal.interfaces.PrescriptionDetailsCallback
 import com.app.heal.model.Prescription
 import com.app.heal.model.Status
 import com.app.heal.ui.fragments.DoctorsFragment
-import com.app.heal.ui.fragments.prescription.InvalidPrescriptionFragment
+import com.app.heal.ui.fragments.prescription.PrescriptionInvalidFragment
 import com.app.heal.ui.fragments.prescription.PrescriptionInProgressFragment
 import com.app.heal.ui.fragments.prescription.PrescriptionIssueFragment
+import com.app.heal.ui.fragments.prescription.PrescriptionNotUploadedFragment
 import com.app.heal.utils.Util
 import com.google.android.material.tabs.TabLayout
 
@@ -48,7 +49,7 @@ class HomeActivity : BaseActivity(), PrescriptionDetailsCallback, FirstDoctorIdC
                     PrescriptionInProgressFragment()
                 }
                 Status.Invalid -> {
-                    InvalidPrescriptionFragment()
+                    PrescriptionInvalidFragment()
                 }
                 Status.Issue -> {
                     PrescriptionIssueFragment()
@@ -56,9 +57,15 @@ class HomeActivity : BaseActivity(), PrescriptionDetailsCallback, FirstDoctorIdC
                 Status.Valid -> {
                     DoctorsFragment()
                 }
+                Status.NotUploaded -> {
+                    PrescriptionNotUploadedFragment()
+                }
             }
-            setupViewPagerAndTabs()
         }
+        else {
+            fragmentType = PrescriptionNotUploadedFragment()
+        }
+        setupViewPagerAndTabs()
     }
 
     override fun onGetFirstDoctorId(doctorId: String?) {

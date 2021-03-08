@@ -3,6 +3,8 @@ package com.app.heal.model
 class User(
     var userId: String,
     var name: String,
+    var age: Long,
+    var gender: String,
     var email: String,
     var phone: String,
     var points: Double,
@@ -13,6 +15,8 @@ class User(
 ) {
     constructor() : this(
         "",
+        "",
+        0L,
         "",
         "",
         "",

@@ -1,5 +1,6 @@
 package com.app.heal.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,10 @@ import com.app.heal.adapter.DoctorsAdapter
 import com.app.heal.interfaces.UserDetailsCallback
 import com.app.heal.model.Doctor
 import com.app.heal.model.User
+import com.app.heal.ui.activity.AddDoctorActivity
+import com.app.heal.utils.animateView
 import com.app.heal.utils.getSelfUId
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DoctorsFragment : BaseFragment(), UserDetailsCallback {
 
@@ -37,6 +41,13 @@ class DoctorsFragment : BaseFragment(), UserDetailsCallback {
         rvDoctors.layoutManager = gridLayoutManager
 
         firebaseManager.getUserDetails(getSelfUId(), this)
+
+        val fab = view.findViewById<FloatingActionButton>(R.id.addDocButton)
+        fab.bringToFront()
+        fab.setOnClickListener {
+            animateView(fab)
+            startActivity(Intent(this.context, AddDoctorActivity::class.java))
+        }
 
         return view
     }

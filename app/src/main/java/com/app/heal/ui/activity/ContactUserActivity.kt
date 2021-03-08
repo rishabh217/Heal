@@ -3,6 +3,7 @@ package com.app.heal.ui.activity
 import android.os.Bundle
 import com.app.heal.R
 import com.app.heal.model.ContactUser
+import com.app.heal.model.FlagStatus
 import com.app.heal.utils.animateView
 import com.app.heal.utils.getSelfUId
 import com.app.heal.utils.setSnackBar
@@ -23,6 +24,7 @@ class ContactUserActivity : BaseActivity() {
             contact.name = name.text.toString()
             contact.email = email.text.toString()
             contact.phone = phone.text.toString()
+            contact.flag = FlagStatus.Open
             firebaseManager.setContactUserDetails(getSelfUId(), contact)
             setSnackBar(findViewById(android.R.id.content), "Request submitted successfully")
             this.finish()
