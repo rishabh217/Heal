@@ -100,6 +100,7 @@ class AddDetailsActivity : BaseActivity() {
             for (idx in 0..3) {
                 if (medIdArr[idx].isNotEmpty()) {
                     date = Date()
+                    startOfDay = getStartOfDay(date)
                     val dailyDose = DailyDose()
                     dailyDose.points = 10
                     val doseList = ArrayList<Dose>()
