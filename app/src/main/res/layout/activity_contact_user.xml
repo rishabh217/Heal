@@ -7,52 +7,104 @@
     tools:context=".ui.activity.ContactUserActivity">
 
     <TextView
+        android:id="@+id/head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000"
+        android:fontFamily="@font/joanna_sans_blk"
+        android:layout_marginTop="40dp"
+        android:text="Contact Me"/>
+
+    <TextView
         android:id="@+id/mainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="17sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:textColor="#000"
+        android:layout_margin="50dp"
+        android:layout_below="@id/head"
+        android:fontFamily="@font/joanna_sans_medium"
+        android:letterSpacing="0.03"
+        android:textColor="#EF5350"
         android:textAlignment="center"
         android:text="Please provide your contact details so that medical professionals can contact you to verify the details."/>
 
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
         android:layout_below="@id/mainText"
-        android:layout_marginTop="75dp"
-        android:gravity="center"
-        android:hint="Enter Name*" />
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/joanna_sans_medium"
+        android:layout_marginEnd="32dp"
+        android:letterSpacing="0.03"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:paddingStart="17dp"
+        android:paddingBottom="15dp"
+        android:paddingEnd="15dp"
+        android:layout_marginStart="31dp"
+        android:background="@drawable/text_field_filled_line"
+        android:hint="Your Name" />
 
     <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
         android:layout_below="@id/name"
         android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:hint="Enter Phone*" />
+        android:fontFamily="@font/joanna_sans_medium"
+        android:layout_marginEnd="32dp"
+        android:letterSpacing="0.03"
+        android:inputType="phone"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:paddingStart="17dp"
+        android:paddingBottom="15dp"
+        android:paddingEnd="15dp"
+        android:layout_marginStart="31dp"
+        android:background="@drawable/text_field_filled_line"
+        android:hint="Your Phone" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
         android:layout_below="@id/phone"
         android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:hint="Enter Email" />
+        android:fontFamily="@font/joanna_sans_medium"
+        android:layout_marginEnd="32dp"
+        android:letterSpacing="0.03"
+        android:inputType="textEmailAddress"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:paddingStart="17dp"
+        android:paddingBottom="15dp"
+        android:paddingEnd="15dp"
+        android:layout_marginStart="31dp"
+        android:background="@drawable/text_field_empty_line"
+        android:hint="Your Email" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="75dp"
+        android:layout_height="36dp"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.03"
+        android:gravity="center"
+        android:fontFamily="@font/joanna_sans_bold"
+        android:textAllCaps="true"
+        android:text="Submit"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Submit" />
+        android:layout_margin="36dp"
+        android:background="@drawable/button_valid" />
 
 </RelativeLayout>

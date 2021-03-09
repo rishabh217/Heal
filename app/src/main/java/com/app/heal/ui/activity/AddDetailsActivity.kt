@@ -14,6 +14,9 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class AddDetailsActivity : BaseActivity() {
+
+    private var mGender = Gender.None
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_details)
@@ -25,6 +28,20 @@ class AddDetailsActivity : BaseActivity() {
         inputMedsText?.setOnClickListener {
             inputMedsText?.visibility = View.GONE
             medsLayout?.visibility = View.VISIBLE
+        }
+
+        male?.setOnClickListener {
+            animateView(male)
+            male?.setBackgroundResource(R.drawable.text_male_selected)
+            female?.setBackgroundResource(R.drawable.text_female_not_selected)
+            mGender = Gender.Male
+        }
+
+        female?.setOnClickListener {
+            animateView(female)
+            female?.setBackgroundResource(R.drawable.text_female_selected)
+            male?.setBackgroundResource(R.drawable.text_male_not_selected)
+            mGender = Gender.Female
         }
 
         save.setOnClickListener {
@@ -40,8 +57,8 @@ class AddDetailsActivity : BaseActivity() {
                 doseArr[idx] = if (etDoseArr[idx].text.toString().isNotEmpty()) etDoseArr[idx].text.toString() else ""
             }
 
-            if (name.text.toString().isEmpty() || dname.text.toString().isEmpty() || age.text.toString().isEmpty() || gender.text.toString().isEmpty()) {
-                Toast.makeText(this, "Enter proper info.", Toast.LENGTH_SHORT).show()
+            if (name.text.toString().isEmpty() || dname.text.toString().isEmpty() || age.text.toString().isEmpty() || mGender == Gender.None) {
+                setSnackBar(findViewById(android.R.id.content), "Enter all required information")
                 return@setOnClickListener
             }
 
@@ -82,7 +99,7 @@ class AddDetailsActivity : BaseActivity() {
             user.doctors = docMap
             user.name = name.text.toString()
             user.age = age.text.toString().toLong()
-            user.gender = gender.text.toString()
+            user.gender = mGender
             if (email.text.toString().isNotEmpty()) user.email = email.text.toString()
             if (phone.text.toString().isNotEmpty()) user.phone = phone.text.toString()
             user.userId = getSelfUId()

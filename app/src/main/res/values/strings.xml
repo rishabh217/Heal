@@ -2,4 +2,5 @@
     <string name="app_name">Heal</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="input_meds_text" ><b>Tap here to input medicines on your own.</b>\n(You still have to upload prescription in next step)</string>
 </resources>

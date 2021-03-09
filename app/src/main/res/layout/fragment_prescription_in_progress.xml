@@ -12,10 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:layout_centerHorizontal="true"
+        android:fontFamily="@font/joanna_sans_medium"
+        android:letterSpacing="0.03"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="15sp"
-        android:text="Your prescription is going through scrutiny. It usually takes few minutes. Till then why don't you see some health yip." />
+        android:textSize="17sp"
+        android:text="Your prescription is under examination. It will take a few minutes to update.\nTill then, find some health tips below!" />
     
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vpTips"

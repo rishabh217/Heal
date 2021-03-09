@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:toots="http://schemas.android.com/tools"
     android:layout_gravity="center_horizontal">
 
     <androidx.cardview.widget.CardView
@@ -26,28 +27,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
+                android:letterSpacing="0.03"
+                android:fontFamily="@font/joanna_sans_bold"
                 android:textColor="#000"
                 android:textSize="18sp"
-                android:hint="Medicine"/>
+                toots:text="Medicine Name"/>
 
             <TextView
                 android:id="@+id/medDoses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:textColor="#000"
+                android:textColor="#EF5350"
                 android:layout_marginEnd="25dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
+                android:letterSpacing="0.03"
+                android:fontFamily="@font/joanna_sans_medium"
                 android:layout_alignParentEnd="true"
-                android:hint="3 doses" />
+                toots:text="3 doses" />
 
             <TextView
                 android:id="@+id/barHead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/medName"
-                android:layout_marginTop="20dp"
-                android:textSize="15sp"
+                android:layout_marginTop="23dp"
+                android:textSize="16sp"
+                android:letterSpacing="0.03"
+                android:fontFamily="@font/joanna_sans_regular"
                 android:textColor="#000"
                 android:layout_centerHorizontal="true"
                 android:text="Progress"/>
@@ -70,9 +77,11 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="20dp"
                 android:textSize="15sp"
-                android:textColor="#000"
+                android:textColor="#26A69A"
+                android:letterSpacing="0.03"
+                android:fontFamily="@font/joanna_sans_regular"
                 android:layout_centerHorizontal="true"
-                android:hint="0 / 3"/>
+                toots:text="0 / 3"/>
 
             <RelativeLayout
                 android:id="@+id/medButtonsLayout"
@@ -90,27 +99,26 @@
                     android:visibility="gone"
                     android:layout_marginStart="50dp"/>
 
-                <TextView
-                    android:id="@+id/medTimeChar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="#000"
-                    android:textSize="18sp"
-                    android:text=">>"
-                    android:layout_marginStart="50dp"/>
+                <ImageView
+                    android:id="@+id/medTimeIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_medicines_time"
+                    android:layout_marginStart="35dp"
+                    android:layout_centerVertical="true"/>
 
                 <TextView
                     android:id="@+id/medTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="19sp"
-                    android:textColor="#000"
-                    android:layout_marginStart="25dp"
-                    android:layout_toEndOf="@id/medTimeChar"
+                    android:textColor="#EF5350"
+                    android:letterSpacing="0.03"
+                    android:fontFamily="@font/joanna_sans_medium"
+                    android:layout_marginStart="17dp"
+                    android:layout_toEndOf="@id/medTimeIcon"
                     android:layout_centerVertical="true"
-                    android:hint="00:00 AM"/>
+                    toots:text="00:00 AM"/>
 
                 <ImageView
                     android:id="@+id/medTaken"

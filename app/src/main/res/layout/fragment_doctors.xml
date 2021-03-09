@@ -6,6 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.DoctorsFragment">
 
+    <ProgressBar
+        android:id="@+id/progressDoctors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDoctors"
         android:layout_width="match_parent"
@@ -16,8 +22,9 @@
         android:id="@+id/addDocButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        app:fabCustomSize="60dp"
         android:layout_gravity="bottom|end"
         android:layout_margin="25dp"
-        android:src="@drawable/ic_doctor_avatar" />
+        android:src="@drawable/ic_stethoscope" />
 
 </FrameLayout>

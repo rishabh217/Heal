@@ -10,38 +10,68 @@
         android:id="@+id/head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="26sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
         android:textColor="#000"
-        android:text="Add Prescription" />
+        android:fontFamily="@font/joanna_sans_blk"
+        android:layout_marginTop="35dp"
+        android:text="Add Prescription"/>
+
+    <TextView
+        android:id="@+id/addText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(Tap icon to upload)"
+        android:textSize="13sp"
+        android:textColor="#EF5350"
+        android:textAlignment="center"
+        android:fontFamily="@font/joanna_sans_light"
+        android:layout_above="@id/addImage"
+        android:elevation="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"/>
 
     <ImageView
         android:id="@+id/addImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@android:drawable/ic_menu_camera"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_prescription"
+        android:elevation="10dp"
         android:layout_centerInParent="true"/>
 
-    <ImageView
-        android:id="@+id/imagePrescription"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/head"
         android:layout_above="@id/savePrescription"
-        android:layout_marginTop="25dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginBottom="35dp" >
+
+        <ImageView
+            android:id="@+id/imagePrescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/savePrescription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.03"
+        android:gravity="center"
+        android:fontFamily="@font/joanna_sans_bold"
+        android:textAllCaps="true"
+        android:text="Upload"
+        android:layout_margin="5dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
         android:layout_above="@id/skipText"
-        android:text="Save" />
+        android:background="@drawable/button_not_valid" />
 
     <TextView
         android:id="@+id/skipText"
@@ -51,7 +81,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="25dp"
         android:textColor="#FF0000"
+        android:padding="10dp"
         android:textSize="14sp"
-        android:text="Skip >>"/>
+        android:fontFamily="@font/joanna_sans_medium"
+        android:text="SKIP"/>
 
 </RelativeLayout>

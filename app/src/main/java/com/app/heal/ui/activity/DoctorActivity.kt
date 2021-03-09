@@ -1,6 +1,7 @@
 package com.app.heal.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.heal.R
@@ -52,6 +53,7 @@ class DoctorActivity : BaseActivity(), MedicineCoursesCallback,
         var gotPoints = 0.0
         var totalPoint = 0.0
         if (medicines != null) {
+            progressBar?.visibility = View.GONE
             val medicineCourse = medicines[doctorId]
             if (medicineCourse != null) {
                 val doses = medicineCourse.medicines

@@ -9,28 +9,63 @@
         android:id="@+id/issueText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:textSize="17sp"
         android:textColor="#000"
-        android:layout_margin="35dp"
+        android:layout_margin="40dp"
+        android:fontFamily="@font/joanna_sans_medium"
+        android:letterSpacing="0.03"
         android:textAlignment="center"
-        android:text="Your Prescription seems to have some issues. Please try reuploading the prescription or enter your contact details so that professionals can verify it for you." />
+        android:text="\nYour Prescription seems to have some issues.\n\nPlease try reuploading the prescription or enter your contact details so that professionals can verify it for you." />
+
 
     <Button
         android:id="@+id/uploadAgain"
         android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.03"
+        android:gravity="center"
+        android:fontFamily="@font/joanna_sans_bold"
+        android:textAllCaps="true"
+        android:text="Upload Again"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@id/orText"
+        android:background="@drawable/button_valid" />
+
+    <TextView
+        android:id="@+id/orText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/issueText"
-        android:text="Upload"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="17sp"
+        android:textColor="#EF5350"
+        android:fontFamily="@font/joanna_sans_light"
+        android:layout_above="@id/contactUser"
+        android:letterSpacing="0.03"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:text="-- or --"/>
 
     <Button
         android:id="@+id/contactUser"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/uploadAgain"
-        android:layout_marginTop="30dp"
+        android:layout_height="36dp"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.03"
+        android:gravity="center"
+        android:fontFamily="@font/joanna_sans_bold"
+        android:textAllCaps="true"
         android:text="Contact Me"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_valid" />
 
 </RelativeLayout>

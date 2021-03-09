@@ -4,15 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_wallpaper"
     tools:context=".ui.activity.SignInActivity">
 
-    <ImageButton
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="190dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/ic_head"/>
+
+    <Button
         android:id="@+id/googleButton"
-        android:layout_width="62dp"
-        android:layout_height="62dp"
-        android:layout_centerInParent="true"
-        android:layout_margin="75dp"
-        android:background="@drawable/googleg_standard_color_18" />
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:textSize="14sp"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.03"
+        android:gravity="center"
+        android:fontFamily="@font/joanna_sans_bold"
+        android:textAllCaps="true"
+        android:drawableStart="@drawable/ic_google_logo"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:text="Sign in with Google"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="175dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_below="@id/imageLogo"
+        android:background="@drawable/button_google" />
 
 <!--    <ImageButton-->
 <!--        android:id="@+id/phoneButton"-->

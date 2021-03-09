@@ -47,6 +47,7 @@ class PrescriptionActivity : BaseActivity(), ImageUploadStatusCallback {
         imageView.setOnClickListener { askStoragePermission() }
 
         savePrescription?.isEnabled = false
+        savePrescription?.setBackgroundResource(R.drawable.button_not_valid)
         savePrescription?.setOnClickListener {
             animateView(savePrescription)
             if (doctorId.isNotEmpty())
@@ -139,6 +140,7 @@ class PrescriptionActivity : BaseActivity(), ImageUploadStatusCallback {
                             addImage?.visibility = View.GONE
                             imageView.isEnabled = false
                             savePrescription?.isEnabled = true
+                            savePrescription?.setBackgroundResource(R.drawable.button_valid)
                             savePrescription?.setBackgroundColor(Color.parseColor("#D81B60"))
                         } catch (e: IOException) {
                             e.printStackTrace()

@@ -17,6 +17,7 @@ import com.app.heal.ui.fragments.prescription.PrescriptionIssueFragment
 import com.app.heal.ui.fragments.prescription.PrescriptionNotUploadedFragment
 import com.app.heal.utils.Util
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : BaseActivity(), PrescriptionDetailsCallback, FirstDoctorIdCallback {
 
@@ -44,6 +45,7 @@ class HomeActivity : BaseActivity(), PrescriptionDetailsCallback, FirstDoctorIdC
 
     override fun onGetPrescriptionDetails(prescription: Prescription?) {
         if (prescription != null) {
+            progressBar?.visibility = View.GONE
             fragmentType = when (prescription.status) {
                 Status.InProgress -> {
                     PrescriptionInProgressFragment()

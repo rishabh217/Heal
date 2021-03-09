@@ -6,20 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.AddDoctorActivity">
 
+    <TextView
+        android:id="@+id/head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000"
+        android:fontFamily="@font/joanna_sans_blk"
+        android:layout_marginTop="40dp"
+        android:text="Add Doctor"/>
+
     <EditText
         android:id="@+id/dname"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:hint="Enter Doctor's Name*" />
+        android:layout_height="62dp"
+        android:layout_below="@id/head"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/joanna_sans_medium"
+        android:layout_marginEnd="32dp"
+        android:letterSpacing="0.03"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:paddingStart="17dp"
+        android:paddingBottom="15dp"
+        android:paddingEnd="15dp"
+        android:layout_marginStart="31dp"
+        android:background="@drawable/text_field_filled_line"
+        android:hint="Your Doctor's Name" />
 
     <TextView
         android:id="@+id/inputMedsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Tap here to input medicines on your own.\n(You still have to upload prescription in next step)"
+        android:fontFamily="@font/joanna_sans_light"
+        android:text="@string/input_meds_text"
         android:textAlignment="center"
         android:textColor="#FF0000"
         android:textSize="13sp"
@@ -32,141 +56,306 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="30dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         android:layout_below="@id/dname" >
 
         <LinearLayout
             android:id="@+id/medHead1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginEnd="27dp"
             android:weightSum="4.75"
+            android:background="@drawable/text_field_empty"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
             android:orientation="horizontal" >
 
             <EditText
                 android:id="@+id/med1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Medicine 1"
-                android:gravity="center"
-                android:layout_weight="1.75"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="1.75"
+                android:hint="Medicine 1"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="42dp"
+                android:background="#808080"
+                android:layout_gravity="center_vertical"/>
 
             <EditText
                 android:id="@+id/man1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Manufacturer"
-                android:gravity="center"
-                android:layout_weight="2"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="2"
+                android:hint="Manufacturer"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="42dp"
+                android:background="#808080"
+                android:layout_gravity="center_vertical"/>
 
             <EditText
                 android:id="@+id/dose1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Dose"
-                android:gravity="center"
-                android:layout_weight="1"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="1"
+                android:hint="Dose"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/medHead2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/medHead1"
+            android:layout_height="65dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginEnd="27dp"
             android:weightSum="4.75"
+            android:background="@drawable/text_field_empty"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
             android:orientation="horizontal" >
 
             <EditText
                 android:id="@+id/med2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Medicine 2"
-                android:gravity="center"
-                android:layout_weight="1.75"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="1.75"
+                android:hint="Medicine 2"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="42dp"
+                android:background="#808080"
+                android:layout_gravity="center_vertical"/>
 
             <EditText
                 android:id="@+id/man2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Manufacturer"
-                android:gravity="center"
-                android:layout_weight="2"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="2"
+                android:hint="Manufacturer"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="42dp"
+                android:background="#808080"
+                android:layout_gravity="center_vertical"/>
 
             <EditText
                 android:id="@+id/dose2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Dose"
-                android:gravity="center"
-                android:layout_weight="1"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="1"
+                android:hint="Dose"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/medHead3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/medHead2"
+            android:layout_height="65dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginEnd="27dp"
             android:weightSum="4.75"
+            android:background="@drawable/text_field_empty"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
             android:orientation="horizontal" >
 
             <EditText
                 android:id="@+id/med3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Medicine 3"
-                android:gravity="center"
-                android:layout_weight="1.75"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="1.75"
+                android:hint="Medicine 3"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="42dp"
+                android:background="#808080"
+                android:layout_gravity="center_vertical"/>
 
             <EditText
                 android:id="@+id/man3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Manufacturer"
-                android:gravity="center"
-                android:layout_weight="2"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="2"
+                android:hint="Manufacturer"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="42dp"
+                android:background="#808080"
+                android:layout_gravity="center_vertical"/>
 
             <EditText
                 android:id="@+id/dose3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Dose"
-                android:gravity="center"
-                android:layout_weight="1"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="1"
+                android:hint="Dose"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/medHead4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/medHead3"
+            android:layout_height="65dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginEnd="27dp"
             android:weightSum="4.75"
+            android:background="@drawable/text_field_empty"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
             android:orientation="horizontal" >
 
             <EditText
                 android:id="@+id/med4"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Medicine 4"
-                android:gravity="center"
-                android:layout_weight="1.75"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="1.75"
+                android:hint="Medicine 4"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="42dp"
+                android:background="#808080"
+                android:layout_gravity="center_vertical"/>
 
             <EditText
                 android:id="@+id/man4"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Manufacturer"
-                android:gravity="center"
-                android:layout_weight="2"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="2"
+                android:hint="Manufacturer"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="42dp"
+                android:background="#808080"
+                android:layout_gravity="center_vertical"/>
 
             <EditText
                 android:id="@+id/dose4"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Dose"
-                android:gravity="center"
-                android:layout_weight="1"/>
+                android:layout_height="62dp"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:letterSpacing="0.03"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingStart="17dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:layout_weight="1"
+                android:hint="Dose"/>
 
         </LinearLayout>
 
@@ -175,10 +364,17 @@
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="36dp"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.03"
+        android:gravity="center"
+        android:fontFamily="@font/joanna_sans_bold"
+        android:textAllCaps="true"
+        android:text="Continue"
         android:layout_centerHorizontal="true"
-        android:text="Save"
-        android:layout_marginBottom="50dp"/>
+        android:layout_margin="36dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_valid" />
 
 </RelativeLayout>

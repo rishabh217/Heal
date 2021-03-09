@@ -9,19 +9,31 @@
         android:id="@+id/errorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:fontFamily="@font/joanna_sans_medium"
+        android:letterSpacing="0.03"
         android:textSize="17sp"
         android:textColor="#000"
-        android:layout_margin="35dp"
+        android:layout_margin="40dp"
         android:textAlignment="center"
-        android:text="Your Prescription is not uploaded yet. Please try uploading the prescription again." />
+        android:text="\nYour Prescription is not uploaded yet. Please try uploading the prescription again." />
 
     <Button
         android:id="@+id/uploadAgain"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/errorText"
-        android:text="Upload"
-        android:layout_centerHorizontal="true"/>
+        android:layout_height="36dp"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.03"
+        android:gravity="center"
+        android:fontFamily="@font/joanna_sans_bold"
+        android:textAllCaps="true"
+        android:text="Upload Again"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_valid" />
 
 </RelativeLayout>

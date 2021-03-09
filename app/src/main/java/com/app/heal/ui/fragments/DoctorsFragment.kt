@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.heal.R
@@ -23,6 +24,8 @@ class DoctorsFragment : BaseFragment(), UserDetailsCallback {
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var doctorsAdapter: DoctorsAdapter
 
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -33,6 +36,8 @@ class DoctorsFragment : BaseFragment(), UserDetailsCallback {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_doctors, container, false)
+
+        progressBar = view.findViewById(R.id.progressDoctors)
 
         rvDoctors = view.findViewById(R.id.rvDoctors)
         gridLayoutManager = GridLayoutManager(this.context, 2)
@@ -54,6 +59,7 @@ class DoctorsFragment : BaseFragment(), UserDetailsCallback {
 
     override fun onGetUserDetails(user: User?) {
         if (user != null) {
+            progressBar.visibility = View.GONE
             val doctors = user.doctors
             if (doctors != null) {
                 val doctorsArr = arrayListOf<Doctor>()
