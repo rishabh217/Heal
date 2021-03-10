@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.OfferZoneFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Offer Zone" />
+        android:id="@+id/head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000"
+        android:fontFamily="@font/joanna_sans_blk"
+        android:layout_marginTop="40dp"
+        android:text="Offer Zone"/>
 
-</FrameLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pointsCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_below="@id/head"
+        android:layout_margin="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <ImageView
+                android:id="@+id/pointsIcon"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:src="@drawable/ic_heal_points"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/pointsHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/pointsIcon"
+                android:layout_marginStart="15dp"
+                android:textSize="22sp"
+                android:textColor="#000"
+                android:fontFamily="@font/joanna_sans_bold"
+                android:text="Heal Points"/>
+
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="#EF5350"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/joanna_sans_bold"
+                tools:text="0"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/offersHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#BF66BB6A"
+        android:fontFamily="@font/joanna_sans_blk_italic"
+        android:layout_below="@id/pointsCard"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Offers Coming Soon"/>
+
+</RelativeLayout>

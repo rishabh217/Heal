@@ -138,10 +138,10 @@ class PrescriptionActivity : BaseActivity(), ImageUploadStatusCallback {
                             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos)
                             imageView.setImageBitmap(bitmap)
                             addImage?.visibility = View.GONE
+                            addText?.visibility = View.GONE
                             imageView.isEnabled = false
                             savePrescription?.isEnabled = true
                             savePrescription?.setBackgroundResource(R.drawable.button_valid)
-                            savePrescription?.setBackgroundColor(Color.parseColor("#D81B60"))
                         } catch (e: IOException) {
                             e.printStackTrace()
                         }

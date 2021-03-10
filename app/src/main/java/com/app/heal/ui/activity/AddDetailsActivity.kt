@@ -57,7 +57,7 @@ class AddDetailsActivity : BaseActivity() {
                 doseArr[idx] = if (etDoseArr[idx].text.toString().isNotEmpty()) etDoseArr[idx].text.toString() else ""
             }
 
-            if (name.text.toString().isEmpty() || dname.text.toString().isEmpty() || age.text.toString().isEmpty() || mGender == Gender.None) {
+            if (name.text.toString().isEmpty() || dname.text.toString().isEmpty() || age.text.toString().toLong() <= 0L || mGender == Gender.None) {
                 setSnackBar(findViewById(android.R.id.content), "Enter all required information")
                 return@setOnClickListener
             }

@@ -41,6 +41,10 @@ class FirebaseManager @Inject constructor(
             userReference.child("name").setValue(user.name)
         if (user.email.isNotEmpty())
             userReference.child("email").setValue(user.email)
+        if (user.age != 0L)
+            userReference.child("age").setValue(user.age)
+        if (user.gender != Gender.None)
+            userReference.child("gender").setValue(user.gender)
         if (user.phone.isNotEmpty())
             userReference.child("phone").setValue(user.phone)
         if (user.userId.isNotEmpty())
@@ -113,6 +117,8 @@ class FirebaseManager @Inject constructor(
                     user.name = if (userMap["name"] != null) userMap["name"] as String else ""
                     user.phone = if (userMap["phone"] != null) userMap["phone"] as String else ""
                     user.email = if (userMap["email"] != null) userMap["email"] as String else ""
+                    user.age = if (userMap["age"] != null) userMap["age"] as Long else 0L
+                    user.gender = if (userMap["gender"] != null) Gender.valueOf(userMap["gender"] as String) else Gender.None
                     user.userId = if (userMap["userId"] != null) userMap["userId"] as String else ""
                     user.points =
                         if (userMap["points"] != null)

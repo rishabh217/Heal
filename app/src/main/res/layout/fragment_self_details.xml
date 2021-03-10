@@ -1,14 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.SelfDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Self Details" />
+        android:layout_height="wrap_content" >
 
-</FrameLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="15dp"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#000"
+            android:fontFamily="@font/joanna_sans_blk"
+            android:layout_marginTop="40dp"
+            android:text="My Profile"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/avatarLayout"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_below="@id/head"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            app:cardBackgroundColor="#29B6F6"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="80dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="75dp">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_male_avatar"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/nameAgeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/avatarLayout"
+            android:layout_marginTop="25dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.03"
+                android:fontFamily="@font/joanna_sans_bold"
+                android:textColor="#000"
+                android:maxLines="1"
+                tools:text="Rishabh Gupta"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/comma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.03"
+                android:fontFamily="@font/joanna_sans_bold"
+                android:textColor="#000"
+                android:maxLines="1"
+                android:text=" , "
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.03"
+                android:fontFamily="@font/joanna_sans_medium"
+                android:textColor="#000"
+                android:maxLines="1"
+                tools:text="20"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/doctorsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameAgeLayout"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="7dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/doctorsHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#000"
+                    android:layout_margin="15dp"
+                    android:fontFamily="@font/joanna_sans_bold"
+                    android:text="Doctors"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDoctors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/doctorsHead"
+                    android:overScrollMode="never"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="20dp"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:letterSpacing="0.03"
+            android:gravity="center"
+            android:fontFamily="@font/joanna_sans_bold"
+            android:textAllCaps="true"
+            android:text="Share and Earn"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:layout_below="@id/doctorsCard"
+            android:background="@drawable/button_valid_2" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:letterSpacing="0.03"
+            android:gravity="center"
+            android:fontFamily="@font/joanna_sans_bold"
+            android:textAllCaps="true"
+            android:text="Logout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="40dp"
+            android:layout_below="@id/share"
+            android:background="@drawable/button_google" />
+
+        <ImageView
+            android:id="@+id/headImage"
+            android:layout_width="102dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/ic_heal_head"
+            android:layout_below="@id/logout"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+</ScrollView>

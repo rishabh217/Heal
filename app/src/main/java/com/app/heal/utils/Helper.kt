@@ -176,3 +176,11 @@ fun ViewPager.autoScroll(interval: Long) {
     }
     handler.post(runnable)
 }
+
+fun Context.logout() {
+    FirebaseAuth.getInstance().signOut()
+    val intent = Intent(this, SignInActivity::class.java).apply {
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    }
+    startActivity(intent)
+}
