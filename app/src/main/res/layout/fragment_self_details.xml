@@ -154,6 +154,23 @@
             android:background="@drawable/button_valid_2" />
 
         <Button
+            android:id="@+id/privacy"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:letterSpacing="0.03"
+            android:gravity="center"
+            android:fontFamily="@font/joanna_sans_bold"
+            android:textAllCaps="true"
+            android:text="Privacy Policy"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@id/share"
+            android:background="@drawable/button_valid_2" />
+
+        <Button
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
@@ -165,11 +182,11 @@
             android:textAllCaps="true"
             android:text="Logout"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="40dp"
-            android:layout_below="@id/share"
+            android:layout_below="@id/privacy"
             android:background="@drawable/button_google" />
 
         <ImageView

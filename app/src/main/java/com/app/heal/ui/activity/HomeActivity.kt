@@ -109,8 +109,8 @@ class HomeActivity : BaseActivity(), PrescriptionDetailsCallback, FirstDoctorIdC
     }
 
     override fun onGetPrescriptionDetails(prescription: Prescription?) {
+        progressBar?.visibility = View.GONE
         if (prescription != null) {
-            progressBar?.visibility = View.GONE
             fragmentType = when (prescription.status) {
                 Status.InProgress -> {
                     PrescriptionInProgressFragment()

@@ -37,6 +37,7 @@ class SelfDetailsFragment : BaseFragment(), UserDetailsCallback {
     private lateinit var progressBar: ProgressBar
 
     private lateinit var share: Button
+    private lateinit var privacy: Button
     private lateinit var logout: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +59,7 @@ class SelfDetailsFragment : BaseFragment(), UserDetailsCallback {
         progressBar = view.findViewById(R.id.progressBar)
 
         share = view.findViewById(R.id.share)
+        privacy = view.findViewById(R.id.privacy)
         logout = view.findViewById(R.id.logout)
 
         rvDoctors = view.findViewById(R.id.rvDoctors)
@@ -69,6 +71,7 @@ class SelfDetailsFragment : BaseFragment(), UserDetailsCallback {
         firebaseManager.getUserDetails(getSelfUId(), this)
 
         share.setOnClickListener { animateView(share) }
+        privacy.setOnClickListener { animateView(privacy) }
 
         logout.setOnClickListener {
             animateView(logout)
